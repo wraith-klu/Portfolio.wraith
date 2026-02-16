@@ -44,7 +44,7 @@ export const About = () => {
           >
             About <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Me</span>
           </motion.h2>
-          
+
           <motion.p
             variants={itemVariants}
             className="text-lg text-slate-300 max-w-4xl mx-auto leading-relaxed text-justify"
@@ -52,7 +52,7 @@ export const About = () => {
             {personalInfo.bio}
           </motion.p>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {[
             {
@@ -64,7 +64,7 @@ export const About = () => {
             {
               icon: Award,
               title: 'Recognition & Awards',
-              description: 'Multiple national-level hackathon wins, research publications, and professional certifications in AI and cloud technologies.',
+              description: 'Ranked in the top 1% academically, Code4Change Hackathon finalist, 500+ DSA problems solved, and developer of real-world AI systems including code analysis and toxicity detection platforms.',
               gradient: 'from-pink-400 to-purple-400'
             },
             {
@@ -77,7 +77,7 @@ export const About = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 rotateY: 10,
                 boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'

@@ -22,7 +22,7 @@ export const personalInfo = {
     'Machine Learning Engineer',
     'Backend Systems Engineer',
   ],
-  bio: `Passionate Computer Science student specializing in Generative AI, Machine Learning, and Backend Engineering. Currently pursuing B.Tech in Computer Science & Engineering (AI Driven Language Technology) at Koneru Lakshmaiah University with a GPA of 9.61. Experienced in building production-grade AI systems, scalable backend architectures, and real-time ML applications. Skilled in FastAPI, Spring Boot, NLP, LLM-powered systems, and cloud deployment. Actively solving complex problems through intelligent software solutions and preparing for high-impact roles in AI and backend engineering.`
+  bio: `Computer Science undergraduate specializing in AI-Driven Language Technology, Generative AI, and scalable backend engineering, currently pursuing B.Tech in CSE at Koneru Lakshmaiah University with a GPA of 9.61. Experienced in architecting production-grade intelligent systems, real-time inference pipelines, and high-performance APIs. Proficient in FastAPI, Spring Boot, advanced NLP, LLM-powered architectures, and cloud-native deployment. Focused on building robust language-centric AI systems that transform complex data into actionable intelligence at scale.`
 };
 
 
