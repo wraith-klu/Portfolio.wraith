@@ -70,7 +70,8 @@ export const About = () => {
             {
               icon: Target,
               title: 'Future Goals',
-              description: 'Aspiring to become a Software Development Engineer specializing in AI and machine learning solutions for real-world impact.',
+              // description: 'Aspiring to become a Software Development Engineer specializing in AI and machine learning solutions for real-world impact.',
+              description: 'Aspiring Software Development Engineer with a keen interest in building AI and machine learning – based solutions capable of delivering tangible real-world value.',
               gradient: 'from-purple-400 to-indigo-400'
             }
           ].map((item, index) => (
