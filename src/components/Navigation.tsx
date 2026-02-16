@@ -55,7 +55,7 @@ export const Navigation = () => {
               whileHover={{ scale: 1.05 }}
               className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
             >
-              Hemasri
+              @Wraaiiitthhh
             </motion.div>
             
             {/* Desktop Navigation */}

@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Send, Mail, Github, Linkedin, CheckCircle, AlertCircle, Copy } from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
-import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
   const [ref, inView] = useInView({
@@ -25,7 +24,7 @@ export const Contact = () => {
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('chettimchettyhemasri@gmail.com');
+      await navigator.clipboard.writeText('saurabhklu.ai@gmail.com');
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 2000);
     } catch (err) {
@@ -54,7 +53,7 @@ export const Contact = () => {
             from_email: formData.email,
             subject: formData.subject,
             message: formData.message,
-            to_email: 'chettimchettyhemasri@gmail.com'
+            to_email: 'saurabhklu.ai@gmail.com'
           },
           'YOUR_PUBLIC_KEY'
         );
@@ -63,9 +62,9 @@ export const Contact = () => {
         // Fallback to mailto
         const subject = encodeURIComponent(`Portfolio Contact: ${formData.subject}`);
         const body = encodeURIComponent(
-          `Hi Chettim,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}\n\nBest regards,\n${formData.name}`
+          `Hi Saurabh,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}\n\nBest regards,\n${formData.name}`
         );
-        const mailtoUrl = `mailto:chettimchettyhemasri@gmail.com?subject=${subject}&body=${body}`;
+        const mailtoUrl = `mailto:saurabhklu.ai@gmail.com?subject=${subject}&body=${body}`;
         
         // Open default email client
         window.open(mailtoUrl, '_self');

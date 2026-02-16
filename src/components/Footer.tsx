@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, ExternalLink } from 'lucide-react';
+import { Github, Linkedin, Mail} from 'lucide-react';
 import { personalInfo } from '../data/portfolio';
 
 export const Footer = () => {
@@ -15,7 +15,7 @@ export const Footer = () => {
             className="text-center md:text-left"
           >
             <h3 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-2">
-              Chettim Chetty Hemasri 
+              Saurabh Yadav
             </h3>
             <p className="text-slate-400 text-sm">
               Building the future with AI and innovation
@@ -74,19 +74,6 @@ export const Footer = () => {
               ))}
             </div>
             
-            {/* Portfolio Link */}
-            <div className="mt-4 text-center md:text-right">
-              <p className="text-slate-300 text-sm mb-2">Product Designer Portfolio</p>
-              <motion.a
-                href={personalInfo.portfolio}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.2, y: -3 }}
-                className="inline-flex p-3 bg-slate-800 text-slate-400 hover:text-white rounded-lg transition-all duration-300 hover:bg-slate-700"
-              >
-                <ExternalLink size={20} />
-              </motion.a>
-            </div>
           </motion.div>
         </div>
         
