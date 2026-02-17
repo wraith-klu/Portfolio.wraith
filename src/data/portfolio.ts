@@ -116,7 +116,7 @@ export const projects: Project[] = [
 
 export const achievements: Achievement[] = [
   {
-    title: 'Top 1% of Department',
+    title: 'Top 1% of CSE Department',
     organization: 'Koneru Lakshmaiah University',
     year: '2024–Present',
     description: 'Ranked among the top 1% of the Computer Science department with an exceptional GPA of 9.61, demonstrating consistent academic excellence.'
