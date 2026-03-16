@@ -86,7 +86,7 @@ export const projects: Project[] = [
     description: 'Engineered a hybrid NLP moderation system for real-time detection of abusive and toxic language with sentiment analysis, severity scoring, and keyword highlighting. Combines ML models with LLM fallback for contextual moderation and includes an analytics dashboard with KPIs, charts, word clouds, history tracking, and CSV export.',
     techStack: ['Python', 'FastAPI', 'React', 'NLP', 'Machine Learning', 'LLM', 'Plotly'],
     liveUrl: 'https://toxiai.vercel.app',
-    githubUrl: 'https://github.com/wraith-klu/ToxiGuard-AI',
+    githubUrl: 'https://github.com/wraith-klu/ToxiGuard.AI-Agent',
     featured: true
   },
   {
