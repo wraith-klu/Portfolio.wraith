@@ -132,5 +132,6 @@ export const Education = () => {
         </motion.div>
       </div>
     </section>
+    
   );
 };

@@ -28,7 +28,7 @@ export const personalInfo = {
 
 export const experiences: Experience[] = [
   {
-    company: 'AWS Academy — AICTE EduSkills',
+    company: 'AWS Academy — EduSkills',
     role: 'AI-ML Virtual Intern (Cohort 12)',
     duration: 'Apr 2025 – Jun 2025',
     description: [
@@ -45,7 +45,8 @@ export const experiences: Experience[] = [
       'Python',
       'Machine Learning',
       'NLP',
-      'Cloud Deployment'
+      'Sentiment Analysis',
+      'LLM'
     ]
   },
   {
@@ -63,6 +64,8 @@ export const experiences: Experience[] = [
       'FastAPI',
       'React (Vite)',
       'NLP',
+      'LLM',
+      'Sentiment Analysis',
       'Machine Learning',
       'LLM',
       'Plotly',
@@ -74,19 +77,19 @@ export const experiences: Experience[] = [
 
 export const projects: Project[] = [
   {
-    title: 'CodeSentinel AI — Intelligent Code Smell Detection System',
-    description: 'Developed an AI-powered static code analysis platform to detect code smells using AST-based parsing, machine learning models, and LLM reasoning. Supports real-time follow-up queries for deeper code understanding and generates PDF reports with optimization suggestions. Improves software quality by identifying issues such as long methods, duplicate code, god classes, and poor naming practices.',
-    techStack: ['Python', 'FastAPI', 'Streamlit', 'LLM', 'AST', 'Machine Learning'],
-    liveUrl: 'https://codesentinel.streamlit.app/',
-    githubUrl: 'https://github.com/Wraith-klu/CodeSentinel-Ai',
+    title: 'ToxiGuard AI — Real-Time Toxicity Detection Platform',
+    description: 'Engineered a hybrid NLP moderation system for real-time detection of abusive and toxic language with sentiment analysis, severity scoring, and keyword highlighting. Combines ML models with LLM fallback for contextual moderation and includes an analytics dashboard with KPIs, charts, word clouds, history tracking, and CSV export.',
+    techStack: ['Python', 'FastAPI', 'React', 'NLP', 'Sentiment Analysis', 'Machine Learning', 'LLM', 'Plotly'],
+    liveUrl: 'https://toxiai.vercel.app',
+    githubUrl: 'https://github.com/wraith-klu/ToxiGuard.AI-Agent-v2.git',
     featured: true
   },
   {
-    title: 'ToxiGuard AI — Real-Time Toxicity Detection Platform',
-    description: 'Engineered a hybrid NLP moderation system for real-time detection of abusive and toxic language with sentiment analysis, severity scoring, and keyword highlighting. Combines ML models with LLM fallback for contextual moderation and includes an analytics dashboard with KPIs, charts, word clouds, history tracking, and CSV export.',
-    techStack: ['Python', 'FastAPI', 'React', 'NLP', 'Machine Learning', 'LLM', 'Plotly'],
-    liveUrl: 'https://toxiguard-ai.vercel.app',
-    githubUrl: 'https://github.com/wraith-klu/ToxiGuard-AI',
+    title: 'Rigel AI — Intelligent Code Smell Detection System',
+    description: 'Developed an AI-powered static code analysis platform to detect code smells using AST-based parsing, machine learning models, and LLM reasoning. Supports real-time follow-up queries for deeper code understanding and generates PDF reports with optimization suggestions. Improves software quality by identifying issues such as long methods, duplicate code, god classes, and poor naming practices.',
+    techStack: ['Python', 'FastAPI', 'React (Vite)', 'LLM', 'AST', 'Machine Learning'],
+    liveUrl: 'https://rigelai-agent.vercel.app/',
+    githubUrl: 'https://github.com/wraith-klu/RigelAI.git',
     featured: true
   },
   {
@@ -135,9 +138,9 @@ export const achievements: Achievement[] = [
   },
   {
     title: 'AWS AI-ML Virtual Internship',
-    organization: 'AICTE — AWS Academy',
+    organization: 'EduSkills — AWS Academy',
     year: '2025',
-    description: 'Completed a structured internship covering cloud infrastructure, machine learning pipelines, NLP, and deployment using AWS services including EC2, IAM, VPC, and SageMaker.'
+    description: 'Completed a 10-week virtual internship where I built and deployed ML models using AWS Academy labs and Amazon SageMaker, gaining hands-on experience with AI, Machine Learning, and Generative AI.'
   },
   {
     title: 'U-19 District Cricket Player',

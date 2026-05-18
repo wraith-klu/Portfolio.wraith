@@ -597,7 +597,7 @@ export const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
             >
               <motion.a
-                href="https://drive.google.com/file/d/1o5JHehdVAv0aZf5gu_01ER9_keCVZhwz/view?usp=sharing"
+                href="https://drive.google.com/file/d/1_XSpfkR22PhM3tEXX-doUhcjkIbaJlso/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(59, 130, 246, 0.5)' }}
