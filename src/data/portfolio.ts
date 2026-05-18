@@ -67,7 +67,7 @@ export const experiences: Experience[] = [
       'LLM',
       'Sentiment Analysis',
       'Machine Learning',
-      'LLM',
+      'Scikit-learn',
       'Plotly',
       'Cloud Deployment'
     ]
