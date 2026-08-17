@@ -29,7 +29,7 @@ export const personalInfo = {
 export const experiences: Experience[] = [
   {
     company: 'AWS Academy — EduSkills',
-    role: 'AI-ML Virtual Intern (Cohort 12)',
+    role: 'AI-ML Intern (Cohort 12)',
     duration: 'Apr 2025 – Jun 2025',
     description: [
       'Configured and deployed AWS cloud infrastructure including EC2 instances, VPCs, and IAM roles following Well-Architected Framework principles for secure and cost-efficient systems.',
@@ -47,12 +47,13 @@ export const experiences: Experience[] = [
       'NLP',
       'Sentiment Analysis',
       'LLM'
-    ]
+    ],
+    verifyUrl: 'https://drive.google.com/file/d/1lD2RdVYjhF1glbqrIgwXQacNrC9tqGzh/view?usp=sharing'
   },
   {
     company: 'Participant — Industry-led learnathons and hackathons (AI/ML Domain) @KLUniversity',
     role: 'AI Project Developer — ToxiGuard AI (Ongoing)',
-    duration: 'Aug 2025 – Present',
+    duration: 'Aug 2025 – Apr 2026',
     description: [
       'Designing and building a real-time toxicity detection platform using NLP pipelines, machine learning models, and LLM-based contextual moderation.',
       'Implementing scalable backend APIs with FastAPI and deploying cloud-hosted services for real-time inference.',
@@ -80,9 +81,10 @@ export const projects: Project[] = [
     title: 'ToxiGuard AI — Real-Time Toxicity Detection Platform',
     description: 'Engineered a hybrid NLP moderation system for real-time detection of abusive and toxic language with sentiment analysis, severity scoring, and keyword highlighting. Combines ML models with LLM fallback for contextual moderation and includes an analytics dashboard with KPIs, charts, word clouds, history tracking, and CSV export.',
     techStack: ['Python', 'FastAPI', 'React', 'NLP', 'Sentiment Analysis', 'Machine Learning', 'LLM', 'Plotly'],
-    liveUrl: 'https://toxiai.vercel.app',
-    githubUrl: 'https://github.com/wraith-klu/ToxiGuard.AI-Agent-v2.git',
-    featured: true
+    liveUrl: 'https://toxiai-agent.vercel.app/',
+    githubUrl: 'https://github.com/wraith-klu/toxiguard-ai.git',
+    featured: true,
+    logo: '/toxiguard.png'
   },
   {
     title: 'Rigel AI — Intelligent Code Smell Detection System',
@@ -117,46 +119,6 @@ export const projects: Project[] = [
 ];
 
 
-export const achievements: Achievement[] = [
-  {
-    title: 'Top 1% of CSE Department',
-    organization: 'Koneru Lakshmaiah University',
-    year: '2024–Present',
-    description: 'Ranked among the top 1% of the Computer Science department with an exceptional GPA of 9.61, demonstrating consistent academic excellence.'
-  },
-  {
-    title: 'Finalist — Code4Change Hackathon',
-    organization: 'KL University — The Startup Society',
-    year: '2025',
-    description: 'Led a team to develop a ride-booking application (Strive Rides) during the hackathon, showcasing full-stack development and problem-solving skills.'
-  },
-  {
-    title: 'Solved 500+ DSA Problems',
-    organization: 'LeetCode, Codeforces, CodeChef, HackerRank',
-    year: 'Ongoing',
-    description: 'Strengthened algorithmic thinking and coding efficiency by solving 500+ problems across major competitive programming platforms.'
-  },
-  {
-    title: 'AWS AI-ML Virtual Internship',
-    organization: 'EduSkills — AWS Academy',
-    year: '2025',
-    description: 'Completed a 10-week virtual internship where I built and deployed ML models using AWS Academy labs and Amazon SageMaker, gaining hands-on experience with AI, Machine Learning, and Generative AI.'
-  },
-  {
-    title: 'U-19 District Cricket Player',
-    organization: 'Lucknow District Team',
-    year: '2022–2024',
-    description: 'Represented district-level cricket team, demonstrating teamwork, discipline, and high performance under competitive conditions.'
-  },
-  {
-    title: 'Competitive Programming Participant',
-    organization: 'Codeforces, CodeChef, LeetCode',
-    year: 'Ongoing',
-    description: 'Actively participates in coding contests and problem-solving challenges to improve speed, accuracy, and advanced algorithmic skills.'
-  }
-];
-
-
 // export const publications: Publication[] = [
 //   {
 //     title: 'Redefining Medicine: The Power of Generative AI in Modern Healthcare',
@@ -175,6 +137,12 @@ export const achievements: Achievement[] = [
 // ];
 
 export const certifications: Certification[] = [
+  {
+    title: 'Microsoft Certified: Azure AI Apps and Agents Developer Associate',
+    issuer: 'Microsoft',
+    year: '2026',
+    url: 'https://learn.microsoft.com/api/credentials/share/en-us/SaurabhYadav-6589/A97FA4AD5D7BCB5A?sharingId=65D6EB0DA668C3A'
+  },
   {
     title: 'Introduction to Artificial Intelligence',
     issuer: 'IBM — Coursera',
@@ -261,6 +229,46 @@ export const skills: Skill[] = [
   { name: 'Streamlit', level: 85, category: 'tools' }
 ];
 
+
+
+export const achievements: Achievement[] = [
+  {
+    title: 'Top 1% of CSE Department',
+    organization: 'Koneru Lakshmaiah University',
+    year: '2024–Present',
+    description: 'Ranked among the top 1% of the Computer Science department with an exceptional GPA of 9.61, demonstrating consistent academic excellence.'
+  },
+  {
+    title: 'Finalist — Code4Change Hackathon',
+    organization: 'KL University — The Startup Society',
+    year: '2025',
+    description: 'Led a team to develop a ride-booking application (Strive Rides) during the hackathon, showcasing full-stack development and problem-solving skills.'
+  },
+  {
+    title: 'Solved 500+ DSA Problems',
+    organization: 'LeetCode, Codeforces, CodeChef, HackerRank',
+    year: 'Ongoing',
+    description: 'Strengthened algorithmic thinking and coding efficiency by solving 500+ problems across major competitive programming platforms.'
+  },
+  {
+    title: 'AWS AI-ML Virtual Internship',
+    organization: 'EduSkills — AWS Academy',
+    year: '2025',
+    description: 'Completed a 10-week virtual internship where I built and deployed ML models using AWS Academy labs and Amazon SageMaker, gaining hands-on experience with AI, Machine Learning, and Generative AI.'
+  },
+  {
+    title: 'U-19 District Cricket Player',
+    organization: 'Lucknow District Team',
+    year: '2022–2024',
+    description: 'Represented district-level cricket team, demonstrating teamwork, discipline, and high performance under competitive conditions.'
+  },
+  {
+    title: 'Competitive Programming Participant',
+    organization: 'Codeforces, CodeChef, LeetCode',
+    year: 'Ongoing',
+    description: 'Actively participates in coding contests and problem-solving challenges to improve speed, accuracy, and advanced algorithmic skills.'
+  }
+];
 
 // Add mentorship programs
 export const mentorships: Mentorship[] = [

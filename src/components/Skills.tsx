@@ -1,63 +1,45 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import {
-  Code,
-  Brain,
-  Wrench,
-  Database,
-  Cpu,
-  Globe,
-  Palette,
-  Terminal,
-  Zap,
-  Layers,
-  GitBranch
-} from 'lucide-react';
 import { skills } from '../data/portfolio';
+import { TechIcon } from './TechIcon';
 
-const skillIcons: Record<string, any> = {
-  'Python': Code,
-  'Java': Cpu,
-  'JavaScript': Globe,
-  'TypeScript': Code,
-  'React': Layers,
-  'Next.js': Globe,
-  'Flask': Code,
-  'Spring Boot': Cpu,
-  'FastAPI': Zap,
-  'Azure OpenAI': Brain,
-  'LangChain': Brain,
-  'NLP': Brain,
-  'Prompt Engineering': Brain,
-  'RAG Systems': Brain,
-  'Fine-tuning': Brain,
-  'Gemini AI': Brain,
-  'Docker': Wrench,
-  'Git': GitBranch,
-  'Linux': Terminal,
-  'Figma': Palette,
-  'SQL': Database
-};
-
-const categoryColors = {
-  languages: 'from-blue-400 to-cyan-400',
-  frameworks: 'from-purple-400 to-pink-400',
-  ai: 'from-pink-400 to-rose-400',
-  tools: 'from-green-400 to-teal-400'
-};
-
-const categoryLabels = {
-  languages: 'Programming Languages & CS Fundamentals',
-  frameworks: 'Frameworks & Libraries',
-  ai: 'AI & Machine Learning',
-  tools: 'Tools & Technologies'
+const categoryConfig = {
+  languages: {
+    label: 'Programming & CS Fundamentals',
+    gradient: 'from-accent-cyan to-blue-500',
+    bg: 'bg-accent-cyan/10',
+    border: 'border-accent-cyan/20',
+    text: 'text-accent-cyan',
+    badgeClass: 'badge-cyan',
+  },
+  frameworks: {
+    label: 'Frameworks & Libraries',
+    gradient: 'from-accent-violet to-accent-indigo',
+    bg: 'bg-accent-violet/10',
+    border: 'border-accent-violet/20',
+    text: 'text-accent-violet',
+    badgeClass: 'badge-violet',
+  },
+  ai: {
+    label: 'Generative AI & Machine Learning',
+    gradient: 'from-accent-rose to-accent-pink',
+    bg: 'bg-accent-rose/10',
+    border: 'border-accent-rose/20',
+    text: 'text-accent-rose',
+    badgeClass: 'badge-rose',
+  },
+  tools: {
+    label: 'Tools & DevOps Platforms',
+    gradient: 'from-amber-400 to-orange-400',
+    bg: 'bg-amber-400/10',
+    border: 'border-amber-400/20',
+    text: 'text-amber-600',
+    badgeClass: 'badge-amber',
+  },
 };
 
 export const Skills = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true
-  });
+  const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: true });
 
   const skillsByCategory = skills.reduce((acc, skill) => {
     if (!acc[skill.category]) acc[skill.category] = [];
@@ -67,161 +49,99 @@ export const Skills = () => {
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
   };
-
-  const categoryVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4 }
-    }
+  const cardVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } }
   };
-
-  const skillVariants = {
-    hidden: { opacity: 0, scale: 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.3 }
-    }
+  const chipVariants = {
+    hidden: { opacity: 0, scale: 0.92 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.35 } }
   };
 
   return (
-    <section id="skills" className="py-20 bg-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="section-wrapper relative">
+      <div className="section-blob-rose top-0 right-0" />
+      <div className="section-blob-violet bottom-0 left-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={inView ? 'visible' : 'hidden'}
         >
-          <motion.div variants={categoryVariants} className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Technical <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Skills</span>
+          <motion.div variants={cardVariants} className="text-center mb-16">
+            <h2 className="section-heading">
+              Technical <span className="gradient-text-violet">Skills</span>
             </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Expertise across modern technologies, AI frameworks, and development tools
+            <div className="section-divider mx-auto mt-4 mb-4" />
+            <p className="section-subtitle mx-auto text-center">
+              Expertise across modern technologies, AI frameworks, and dev tools
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
             {Object.entries(skillsByCategory).map(([category, categorySkills]) => {
-              const colorGradient = categoryColors[category as keyof typeof categoryColors];
-              const categoryLabel = categoryLabels[category as keyof typeof categoryLabels];
+              const config = categoryConfig[category as keyof typeof categoryConfig];
+              if (!config) return null;
 
               return (
                 <motion.div
                   key={category}
-                  variants={categoryVariants}
-                  className="bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-8 hover:border-slate-600 transition-all duration-500"
+                  variants={cardVariants}
+                  className="glass-card rounded-3xl p-7 border border-white/60 shadow-glass overflow-hidden relative"
                 >
-                  <motion.h3
-                    className={`text-xl font-bold mb-8 bg-gradient-to-r ${colorGradient} bg-clip-text text-transparent`}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    {categoryLabel}
-                  </motion.h3>
+                  {/* Top accent */}
+                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${config.gradient} rounded-t-3xl`} />
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    {categorySkills.map((skill) => {
-                      const IconComponent = skillIcons[skill.name] || Code;
+                  <h3 className={`text-sm font-black mb-6 bg-gradient-to-r ${config.gradient} bg-clip-text text-transparent uppercase tracking-wider`}>
+                    {config.label}
+                  </h3>
 
-                      return (
+                  <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                    {categorySkills.map((skill) => (
                         <motion.div
                           key={skill.name}
-                          variants={skillVariants}
-                          whileHover={{
-                            scale: 1.1,
-                            rotateY: 10,
-                            boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)'
-                          }}
-                          whileTap={{ scale: 0.95 }}
-                          className="group relative bg-slate-700/50 border border-slate-600 rounded-lg p-4 hover:border-blue-400/50 transition-all duration-300 cursor-pointer"
+                          variants={chipVariants}
+                          whileHover={{ y: -3, scale: 1.04 }}
+                          className={`group flex flex-col items-center text-center p-3.5 rounded-2xl ${config.bg} border ${config.border} cursor-default transition-all duration-300 hover:shadow-md`}
                         >
-                          <div className="flex flex-col items-center text-center space-y-3">
-                            <motion.div
-                              whileHover={{ rotate: 12, scale: 1.2 }}
-                              transition={{ duration: 0.3 }}
-                              className={`p-3 rounded-lg bg-gradient-to-r ${colorGradient} group-hover:shadow-lg transition-all duration-300`}
-                            >
-                              <IconComponent className="text-white" size={24} />
-                            </motion.div>
-
-                            <motion.span
-                              className="text-slate-300 font-medium text-sm group-hover:text-white transition-colors duration-300"
-                              whileHover={{ y: -2 }}
-                            >
-                              {skill.name}
-                            </motion.span>
+                          <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-white/80 shadow-sm mb-2 group-hover:shadow-md transition-all duration-300 border border-white/60">
+                            <TechIcon name={skill.name} size={20} />
                           </div>
-
-                          {/* Hover glow effect */}
-                          <motion.div
-                            className={`absolute inset-0 rounded-lg bg-gradient-to-r ${colorGradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}
-                            whileHover={{ scale: 1.05 }}
-                          />
+                          <span className="text-slate-700 font-bold text-[10px] tracking-wide leading-tight group-hover:text-slate-900 transition-colors">
+                            {skill.name}
+                          </span>
                         </motion.div>
-                      );
-                    })}
+                    ))}
                   </div>
                 </motion.div>
               );
             })}
           </div>
 
-          {/* Additional Skills Summary */}
-          <motion.div
-            variants={categoryVariants}
-            className="mt-12 text-center"
-          >
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="inline-block bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-blue-400/50 transition-all duration-500"
-            >
-              <h4 className="text-lg font-semibold text-white mb-4">Core Competencies</h4>
-              <div className="flex flex-wrap gap-3 justify-center max-w-2xl">
+          {/* Core Competencies */}
+          <motion.div variants={cardVariants} className="mt-12 text-center">
+            <div className="glass-card rounded-3xl p-8 border border-white/60 shadow-glass max-w-2xl mx-auto">
+              <h4 className="text-xs font-black text-slate-500 uppercase tracking-widest mb-5">
+                Core Competencies
+              </h4>
+              <div className="flex flex-wrap gap-2.5 justify-center">
                 {[
-                  'Generative AI Development',
-                  'Full-Stack Engineering',
-                  'Backend Development',
-                  'Machine Learning',
-                  'API Design',
-                  'Databases',
-                  'System Design'
-                ].map((competency, index) => (
-                  <motion.span
+                  'Generative AI Development', 'Full-Stack Engineering', 'Backend Development',
+                  'Machine Learning', 'API Design & Optimisation', 'Databases & Query Tuning', 'System Design'
+                ].map((competency) => (
+                  <span
                     key={competency}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="px-4 py-2 bg-gradient-to-r from-slate-700 to-slate-600 text-slate-300 rounded-full text-sm border border-slate-600 hover:border-blue-400/50 hover:text-white transition-all duration-300"
+                    className="badge badge-violet cursor-default hover:bg-accent-violet/20 transition-colors"
                   >
                     {competency}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
-            </motion.div>
-          </motion.div>
-
-          {/* Experience Note */}
-          <motion.div
-            variants={categoryVariants}
-            className="mt-8 text-center"
-          >
-            <motion.p
-              whileHover={{ scale: 1.02 }}
-              className="text-slate-400 text-sm italic bg-slate-800/30 backdrop-blur-sm border border-slate-700 rounded-lg p-4 inline-block"
-            >
-              Had experience working with these technologies through various projects and internships
-            </motion.p>
+            </div>
           </motion.div>
         </motion.div>
       </div>

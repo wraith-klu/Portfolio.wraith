@@ -1,141 +1,195 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Github, ExternalLink, Code, Star } from 'lucide-react';
+import { Github, ExternalLink, Sparkles } from 'lucide-react';
 import { projects } from '../data/portfolio';
 
+const categories = ['All', 'AI / ML', 'Full-Stack', 'Hackathons'];
+
+const categoryAccents: Record<string, string> = {
+  'All': 'from-accent-violet to-accent-indigo',
+  'AI / ML': 'from-accent-cyan to-blue-500',
+  'Full-Stack': 'from-accent-rose to-accent-pink',
+  'Hackathons': 'from-amber-400 to-orange-400',
+};
+
 export const Projects = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true
-  });
-  
-  const [selectedProject, setSelectedProject] = useState<number | null>(null);
+  const [ref, inView] = useInView({ threshold: 0.08, triggerOnce: true });
+  const [activeCategory, setActiveCategory] = useState('All');
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
+  const cardVariants = {
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } }
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8 }
+  const filteredProjects = projects.filter(project => {
+    if (activeCategory === 'All') return true;
+    if (activeCategory === 'AI / ML') {
+      return project.techStack.some(tech =>
+        ['AI', 'ML', 'NLP', 'LLM', 'Machine Learning', 'Sentiment Analysis', 'AST'].includes(tech)
+      );
     }
-  };
+    if (activeCategory === 'Full-Stack') {
+      return project.techStack.some(tech =>
+        ['React.js', 'Spring Boot', 'MySQL', 'Docker', 'REST APIs', 'JWT', 'React (Vite)', 'React'].includes(tech)
+      );
+    }
+    if (activeCategory === 'Hackathons') {
+      return project.description.toLowerCase().includes('hackathon') ||
+        project.title.toLowerCase().includes('hackathon');
+    }
+    return true;
+  });
 
   return (
-    <section id="projects" className="py-20 bg-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="section-wrapper relative">
+      <div className="section-blob-violet -top-20 right-1/4" />
+      <div className="section-blob-cyan bottom-0 left-1/4" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={inView ? 'visible' : 'hidden'}
         >
-          <motion.div variants={cardVariants} className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Featured <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
+          <motion.div variants={cardVariants} className="text-center mb-12">
+            <h2 className="section-heading">
+              Featured <span className="gradient-text-violet">Projects</span>
             </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Innovative solutions spanning AI automation, NLP, and productivity tools
+            <div className="section-divider mx-auto mt-4 mb-4" />
+            <p className="section-subtitle mx-auto text-center">
+              Innovative solutions spanning AI automation, NLP moderation, and robust web applications
             </p>
           </motion.div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                variants={cardVariants}
-                whileHover={{ 
-                  scale: 1.03,
-                  rotateY: 5,
-                  boxShadow: '0 25px 50px -12px rgba(139, 92, 246, 0.3)'
-                }}
-                onClick={() => setSelectedProject(selectedProject === index ? null : index)}
-                className="relative bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-purple-400/50 transition-all duration-500 cursor-pointer group overflow-hidden"
-              >
-                {project.featured && (
-                  <div className="absolute top-4 right-4">
-                    <motion.div
-                      animate={{ rotate: [0, 5, -5, 0] }}
-                      transition={{ duration: 2, repeat: Infinity }}
-                      className="flex items-center gap-1 px-1.5 py-0.5 bg-gradient-to-r from-yellow-400 to-orange-400 text-slate-900 rounded-full text-xs font-semibold"
-                    >
-                      <Star size={10} />
-                      Featured
-                    </motion.div>
-                  </div>
-                )}
-                
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/10 via-transparent to-purple-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2 bg-gradient-to-r from-blue-400 to-purple-400 rounded-lg">
-                      <Code className="text-white" size={20} />
+
+          {/* Filter Tabs */}
+          <motion.div variants={cardVariants} className="flex flex-wrap gap-2 justify-center mb-12">
+            {categories.map((cat) => {
+              const isActive = activeCategory === cat;
+              return (
+                <motion.button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 border ${
+                    isActive
+                      ? `bg-gradient-to-r ${categoryAccents[cat]} text-white border-transparent shadow-md`
+                      : 'glass-card text-slate-600 border-white/60 hover:text-slate-900'
+                  }`}
+                >
+                  {cat}
+                </motion.button>
+              );
+            })}
+          </motion.div>
+
+          {/* Project Grid */}
+          <motion.div
+            layout
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.92, y: -10 }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
+                  whileHover={{ y: -6 }}
+                  className="glass-card rounded-3xl overflow-hidden border border-white/60 shadow-glass group flex flex-col"
+                >
+                  {/* Top gradient bar */}
+                  <div className={`h-1 bg-gradient-to-r ${categoryAccents['All']}`} />
+
+                  <div className="p-6 flex flex-col flex-1">
+                    {/* Header */}
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          {project.logo ? (
+                            <div className="p-1 bg-white rounded-xl border border-white/80 shadow-sm flex items-center justify-center overflow-hidden" style={{ width: '32px', height: '32px', minWidth: '32px' }}>
+                              <img src={project.logo} alt={project.title} className="object-contain w-full h-full" />
+                            </div>
+                          ) : (
+                            <div className="p-2 bg-accent-violet/10 rounded-xl border border-accent-violet/20">
+                              <Sparkles size={15} className="text-accent-violet" />
+                            </div>
+                          )}
+                          {project.featured && (
+                            <span className="badge badge-amber text-[10px]">Featured</span>
+                          )}
+                        </div>
+                        <h3 className="text-base font-extrabold text-slate-900 leading-tight group-hover:text-accent-violet transition-colors duration-300">
+                          {project.title}
+                        </h3>
+                      </div>
+
+                      <div className="flex gap-2 ml-3">
+                        {project.githubUrl && (
+                          <motion.a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.12 }}
+                            title="View on GitHub"
+                            className="p-2 rounded-xl glass-card border border-white/60 text-slate-500 hover:text-accent-violet hover:border-accent-violet/30 transition-all duration-300"
+                          >
+                            <Github size={15} />
+                          </motion.a>
+                        )}
+                        {project.liveUrl && (
+                          <motion.a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.12 }}
+                            title="View Live Demo"
+                            className="p-2 rounded-xl glass-card border border-white/60 text-slate-500 hover:text-accent-cyan hover:border-accent-cyan/30 transition-all duration-300"
+                          >
+                            <ExternalLink size={15} />
+                          </motion.a>
+                        )}
+                      </div>
                     </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-blue-400 transition-colors duration-300">
-                      {project.title}
-                    </h3>
+
+                    <p className="text-slate-600 text-sm leading-relaxed flex-1 mb-4">
+                      {project.description}
+                    </p>
+
+                    {/* Tech stack */}
+                    <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-black/5">
+                      {project.techStack.slice(0, 5).map((tech, i) => (
+                        <span key={i} className="badge badge-violet text-[10px] cursor-default">
+                          {tech}
+                        </span>
+                      ))}
+                      {project.techStack.length > 5 && (
+                        <span className="badge badge-cyan text-[10px]">+{project.techStack.length - 5}</span>
+                      )}
+                    </div>
                   </div>
-                  
-                  <p className="text-slate-300 mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
-                  
-                  <div className="flex flex-wrap gap-2 mb-6">
-                    {project.techStack.map((tech, i) => (
-                      <motion.span
-                        key={i}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={inView ? { opacity: 1, scale: 1 } : {}}
-                        transition={{ duration: 0.3, delay: index * 0.1 + i * 0.05 }}
-                        className="px-2 py-1 bg-slate-700 text-slate-300 rounded-md text-xs border border-slate-600 hover:border-blue-400/50 transition-colors duration-300"
-                      >
-                        {tech}
-                      </motion.span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex gap-4">
-                    {project.githubUrl && (
-                      <motion.a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-400/20"
-                      >
-                        <Github size={16} />
-                        Code
-                      </motion.a>
-                    )}
-                    
-                    {project.liveUrl && (
-                      <motion.a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg transition-all duration-300 hover:shadow-lg hover:shadow-purple-400/20"
-                      >
-                        <ExternalLink size={16} />
-                        Live Demo
-                      </motion.a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
+
+          {filteredProjects.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="text-center py-16 text-slate-500"
+            >
+              No projects in this category yet.
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>

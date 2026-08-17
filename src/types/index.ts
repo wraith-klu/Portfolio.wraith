@@ -5,6 +5,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
+  logo?: string;
 }
 
 export interface Experience {
@@ -14,6 +15,7 @@ export interface Experience {
   description: string[];
   techStack: string[];
   logo?: string;
+  verifyUrl?: string;
 }
 
 export interface Achievement {

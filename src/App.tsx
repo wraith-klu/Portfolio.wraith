@@ -7,7 +7,6 @@ import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { Skills } from './components/Skills';
 import { Achievements } from './components/Achievements';
-// import { Publications } from './components/Publications';
 import { Certifications } from './components/Certifications';
 import { Mentorships } from './components/Mentorships';
 import { Volunteering } from './components/Volunteering';
@@ -16,12 +15,34 @@ import { Footer } from './components/Footer';
 
 function App() {
   useEffect(() => {
-    // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
   }, []);
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white font-sans">
+    <div className="min-h-screen text-slate-900 font-sans relative">
+      {/* ── Fixed Global Background ── */}
+      <div className="portfolio-bg">
+        {/* Pinterest video background */}
+        <video
+          className="portfolio-bg-video"
+          src="/bg-video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
+        {/* Light gradient overlay */}
+        <div className="portfolio-bg-overlay" />
+        {/* Animated color blobs */}
+        <div className="blobs-container">
+          <div className="blob blob-1" />
+          <div className="blob blob-2" />
+          <div className="blob blob-3" />
+          <div className="blob blob-4" />
+        </div>
+      </div>
+
+      {/* ── Page Content ── */}
       <Navigation />
       <main>
         <Hero />
@@ -30,9 +51,8 @@ function App() {
         <Experience />
         <Projects />
         <Skills />
-        <Achievements />
-        {/* <Publications /> */}
         <Certifications />
+        <Achievements />
         <Mentorships />
         <Volunteering />
         <Contact />

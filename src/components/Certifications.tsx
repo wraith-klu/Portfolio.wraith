@@ -1,110 +1,99 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Award, ExternalLink, CheckCircle } from 'lucide-react';
+import { ExternalLink, ShieldCheck } from 'lucide-react';
 import { certifications } from '../data/portfolio';
+import { CompanyLogo } from './CompanyLogo';
 
 export const Certifications = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.3,
-    triggerOnce: true
-  });
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.08 } }
+  };
+  const cardVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } }
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.6 }
-    }
-  };
+  const colors = [
+    { bg: 'bg-accent-violet/10', text: 'text-accent-violet', border: 'border-accent-violet/20', bar: 'from-accent-violet to-accent-indigo' },
+    { bg: 'bg-accent-cyan/10', text: 'text-accent-cyan', border: 'border-accent-cyan/20', bar: 'from-accent-cyan to-blue-500' },
+    { bg: 'bg-amber-400/10', text: 'text-amber-600', border: 'border-amber-400/20', bar: 'from-amber-400 to-orange-400' },
+    { bg: 'bg-accent-rose/10', text: 'text-accent-rose', border: 'border-accent-rose/20', bar: 'from-accent-rose to-accent-pink' },
+  ];
 
   return (
-    <section id="certifications" className="py-20 bg-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="certifications" className="section-wrapper relative">
+      <div className="section-blob-cyan top-0 right-0" />
+      <div className="section-blob-violet bottom-0 left-1/3" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={inView ? 'visible' : 'hidden'}
         >
           <motion.div variants={cardVariants} className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Professional <span className="bg-gradient-to-r from-green-400 to-teal-400 bg-clip-text text-transparent">Certifications</span>
+            <h2 className="section-heading">
+              Verified <span className="gradient-text-violet">Certifications</span>
             </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Continuous learning and professional development in cutting-edge technologies
+            <div className="section-divider mx-auto mt-4 mb-4" />
+            <p className="section-subtitle mx-auto text-center">
+              Continuous learning and professional credentials in cloud, ML, and CS architectures
             </p>
           </motion.div>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {certifications.map((cert, index) => (
-              <motion.div
-                key={index}
-                variants={cardVariants}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 10,
-                  boxShadow: '0 25px 50px -12px rgba(34, 197, 94, 0.3)'
-                }}
-                className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-green-400/50 transition-all duration-500 group relative overflow-hidden"
-              >
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 max-w-7xl mx-auto">
+            {certifications.map((cert, index) => {
+              const color = colors[index % colors.length];
+              return (
                 <motion.div
-                  animate={{ 
-                    rotate: [0, 360]
-                  }}
-                  transition={{ 
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: 'linear'
-                  }}
-                  className="absolute top-2 right-2 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
+                  key={index}
+                  variants={cardVariants}
+                  whileHover={{ y: -5, scale: 1.02 }}
+                  className="glass-card rounded-3xl overflow-hidden border border-white/60 shadow-glass group relative flex flex-col min-h-[14rem]"
                 >
-                  <Award size={80} className="text-green-400" />
-                </motion.div>
-                
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-4">
-                    <motion.div
-                      whileHover={{ rotate: 180, scale: 1.1 }}
-                      transition={{ duration: 0.3 }}
-                      className="p-2 bg-gradient-to-r from-green-400 to-teal-400 rounded-lg"
-                    >
-                      <CheckCircle className="text-white" size={20} />
-                    </motion.div>
-                    <span className="text-green-400 font-semibold text-sm">{cert.year}</span>
+                  {/* Top accent bar */}
+                  <div className={`h-1 bg-gradient-to-r ${color.bar}`} />
+
+                  <div className="p-6 flex flex-col flex-1">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className={`p-2.5 ${color.bg} ${color.text} rounded-xl border ${color.border}`}>
+                        <ShieldCheck size={18} />
+                      </div>
+                      <span className="text-slate-400 text-xs font-mono tracking-widest">{cert.year}</span>
+                    </div>
+
+                    <h3 className="text-slate-900 font-extrabold text-sm mb-3 group-hover:text-accent-violet transition-colors duration-300 leading-snug flex-1">
+                      {cert.title}
+                    </h3>
+
+                    {/* Issuer with logo */}
+                    <CompanyLogo
+                      name={cert.issuer}
+                      size={20}
+                      nameClassName={`text-xs font-bold ${color.text}`}
+                      className="mb-4"
+                    />
+
+                    {cert.url && (
+                      <a
+                        href={cert.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-1.5 text-xs font-bold ${color.text} hover:underline pt-3 border-t border-black/5 mt-auto`}
+                      >
+                        <ExternalLink size={11} />
+                        Verify Credentials
+                      </a>
+                    )}
                   </div>
-                  
-                  <h3 className="text-white font-bold mb-2 group-hover:text-green-400 transition-colors duration-300 leading-tight">
-                    {cert.title}
-                  </h3>
-                  
-                  <p className="text-slate-400 text-sm mb-4">{cert.issuer}</p>
-                  
-                  {cert.url && (
-                    <motion.a
-                      href={cert.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05, x: 5 }}
-                      className="inline-flex items-center gap-1 text-green-400 hover:text-green-300 transition-colors duration-300 text-sm"
-                    >
-                      <ExternalLink size={14} />
-                      Verify
-                    </motion.a>
-                  )}
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </motion.div>
       </div>

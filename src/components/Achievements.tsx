@@ -2,124 +2,92 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Trophy, Award, Star, Medal } from 'lucide-react';
 import { achievements } from '../data/portfolio';
+import { CompanyLogo } from './CompanyLogo';
 
-const getAchievementIcon = (index: number) => {
-  const icons = [Trophy, Award, Star, Medal];
-  return icons[index % icons.length];
-};
-
-const getGradient = (index: number) => {
-  const gradients = [
-    'from-yellow-400 to-orange-400',
-    'from-blue-400 to-purple-400',
-    'from-pink-400 to-rose-400',
-    'from-green-400 to-teal-400'
-  ];
-  return gradients[index % gradients.length];
-};
+const icons = [Trophy, Award, Star, Medal];
+const gradients = [
+  'from-amber-400 to-orange-500',
+  'from-accent-cyan to-blue-500',
+  'from-accent-rose to-accent-pink',
+  'from-accent-violet to-accent-indigo',
+];
+const topBars = [
+  'from-amber-400 to-orange-500',
+  'from-accent-cyan to-blue-500',
+  'from-accent-rose to-accent-pink',
+  'from-accent-violet to-accent-indigo',
+];
 
 export const Achievements = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.2,
-    triggerOnce: true
-  });
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
+    visible: { opacity: 1, transition: { staggerChildren: 0.12 } }
   };
-
   const cardVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -15 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: { duration: 0.8 }
-    }
+    hidden: { opacity: 0, y: 28 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } }
   };
 
   return (
-    <section id="achievements" className="py-20 bg-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="achievements" className="section-wrapper relative">
+      <div className="section-blob-rose top-0 left-0" />
+      <div className="section-blob-cyan bottom-0 right-0" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={inView ? 'visible' : 'hidden'}
         >
           <motion.div variants={cardVariants} className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Awards & <span className="bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">Achievements</span>
+            <h2 className="section-heading">
+              Honours & <span className="gradient-text-violet">Achievements</span>
             </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-              Recognition for excellence in innovation, design, and technology
+            <div className="section-divider mx-auto mt-4 mb-4" />
+            <p className="section-subtitle mx-auto text-center">
+              Recognition for academic excellence, hackathon performance, and competitive coding
             </p>
           </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {achievements.map((achievement, index) => {
-              const IconComponent = getAchievementIcon(index);
-              const gradient = getGradient(index);
-              
+              const IconComponent = icons[index % icons.length];
+              const gradient = gradients[index % gradients.length];
+              const topBar = topBars[index % topBars.length];
+
               return (
                 <motion.div
                   key={index}
                   variants={cardVariants}
-                  whileHover={{ 
-                    scale: 1.05,
-                    rotateY: 10,
-                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-                  }}
-                  className="bg-slate-900/50 backdrop-blur-sm border border-slate-700 rounded-xl p-6 hover:border-yellow-400/50 transition-all duration-500 group relative overflow-hidden"
+                  whileHover={{ y: -5, scale: 1.01 }}
+                  className="glass-card rounded-3xl overflow-hidden border border-white/60 shadow-glass group relative flex flex-col"
                 >
-                  <motion.div
-                    animate={{ 
-                      scale: [1, 1.1, 1],
-                      rotate: [0, 5, -5, 0]
-                    }}
-                    transition={{ 
-                      duration: 3,
-                      repeat: Infinity,
-                      repeatDelay: 2
-                    }}
-                    className="absolute top-2 right-2 opacity-10 group-hover:opacity-20 transition-opacity duration-500"
-                  >
-                    <IconComponent size={100} className="text-yellow-400" />
-                  </motion.div>
-                  
-                  <div className="relative z-10">
-                    <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${gradient} mb-4`}>
-                      <IconComponent className="text-white" size={24} />
+                  {/* Top accent bar */}
+                  <div className={`h-1 bg-gradient-to-r ${topBar}`} />
+
+                  <div className="p-7 flex flex-col flex-1">
+                    {/* Icon */}
+                    <div className={`inline-flex p-3 rounded-2xl bg-gradient-to-br ${gradient} text-white mb-5 shadow-md self-start`}>
+                      <IconComponent size={20} />
                     </div>
-                    
-                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-yellow-400 transition-colors duration-300">
+
+                    <h3 className="text-base font-extrabold text-slate-900 mb-2 leading-tight group-hover:text-accent-violet transition-colors duration-300">
                       {achievement.title}
                     </h3>
-                    
-                    <div className="flex items-center gap-2 mb-3">
-                      <p className="text-blue-400 font-semibold">{achievement.organization}</p>
-                      <span className="text-slate-500">•</span>
-                      <span className="text-slate-400">{achievement.year}</span>
+
+                    <div className="flex flex-wrap items-center gap-2 mb-4">
+                      <CompanyLogo
+                        name={achievement.organization}
+                        size={18}
+                        nameClassName="text-xs font-bold text-accent-violet"
+                      />
+                      <span className="text-slate-400 text-xs font-semibold">{achievement.year}</span>
                     </div>
-                    
-                    {achievement.prize && (
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={inView ? { scale: 1 } : { scale: 0 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="inline-block px-3 py-1 bg-gradient-to-r from-green-400 to-emerald-400 text-slate-900 rounded-full text-sm font-semibold mb-3"
-                      >
-                        {achievement.prize}
-                      </motion.div>
-                    )}
-                    
-                    <p className="text-slate-400 text-sm leading-relaxed">
+
+                    <p className="text-slate-600 text-sm leading-relaxed flex-1">
                       {achievement.description}
                     </p>
                   </div>
