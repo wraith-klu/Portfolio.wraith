@@ -60,21 +60,20 @@ body {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  filter: blur(2px) brightness(0.85) saturate(1.15);
-  transform: scale(1.05); /* prevent blur edges */
+  filter: brightness(0.75) saturate(1.2);
+  transform: scale(1.05);
+  /* prevent blur edges */
 }
 
 .portfolio-bg-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(248, 250, 252, 0.72) 0%,
-    rgba(237, 233, 254, 0.65) 25%,
-    rgba(224, 242, 254, 0.68) 50%,
-    rgba(253, 242, 248, 0.65) 75%,
-    rgba(248, 250, 252, 0.72) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(248, 250, 252, 0.72) 0%,
+      rgba(237, 233, 254, 0.65) 25%,
+      rgba(224, 242, 254, 0.68) 50%,
+      rgba(253, 242, 248, 0.65) 75%,
+      rgba(248, 250, 252, 0.72) 100%);
 }
 
 /* ============================================
@@ -173,7 +172,7 @@ body {
   -webkit-backdrop-filter: blur(20px) saturate(160%);
   backdrop-filter: blur(20px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 
+  box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.08),
     0 2px 8px rgba(0, 0, 0, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
@@ -183,7 +182,7 @@ body {
 .glass-card:hover {
   background: rgba(255, 255, 255, 0.72);
   border-color: rgba(255, 255, 255, 0.8);
-  box-shadow: 
+  box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.12),
     0 4px 16px rgba(0, 0, 0, 0.06),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -213,7 +212,7 @@ body {
   -webkit-backdrop-filter: blur(24px) saturate(180%);
   backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255,255,255,0.8);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 /* ============================================
@@ -399,12 +398,10 @@ body {
   left: -150%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(to right,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%);
   transform: skewX(-25deg);
   transition: 0.75s;
 }
@@ -519,7 +516,11 @@ body {
    UTILITY OVERRIDES
    ============================================ */
 /* Prevent base transition override on interactive elements */
-input, textarea, select, button, a {
+input,
+textarea,
+select,
+button,
+a {
   transition-property: color, background-color, border-color, box-shadow, transform, opacity;
   transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   transition-duration: 300ms;
