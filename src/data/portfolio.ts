@@ -113,7 +113,7 @@ export const projects: Project[] = [
     title: 'Echo — Real-Time Multilingual Speech Translation System',
     description: 'High-performance backend service for an ESP32-S3 IoT wearable device capturing speech, streaming via WebSocket, transcribing with faster-whisper, translating with NLLB-200, and synthesizing output speech through Piper TTS with PostgreSQL logging.',
     techStack: ['FastAPI', 'Python 3.11', 'WebSocket', 'faster-whisper', 'NLLB-200', 'Piper TTS', 'PostgreSQL', 'Docker'],
-    liveUrl: 'https://echo-alpha-weld.vercel.app/',
+    liveUrl: 'https://echo-alpha-agent.vercel.app/',
     githubUrl: 'https://github.com/wraith-klu/Echo.git',
     featured: true,
     timing: 'July 2026 – Present',

@@ -20,7 +20,7 @@ export const Footer = () => {
             <div className="md:col-span-5 space-y-4">
               <div className="flex items-center gap-2">
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent-violet to-accent-cyan flex items-center justify-center shadow-violet-glow">
-                  <span className="text-white font-black text-sm">SY</span>
+                  <span className="text-white font-black text-sm">W</span>
                 </div>
                 <span className="text-lg font-black gradient-text-violet">Wraith.AI</span>
               </div>

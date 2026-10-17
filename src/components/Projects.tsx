@@ -107,7 +107,13 @@ export const Projects = () => {
                   className="glass-card rounded-3xl overflow-hidden border border-white/60 shadow-glass group flex flex-col"
                 >
                   {/* Top gradient bar */}
-                  <div className={`h-1 bg-gradient-to-r ${categoryAccents['All']}`} />
+                  <div className={`h-1.5 bg-gradient-to-r ${
+                    index % 3 === 0
+                      ? 'from-accent-violet via-purple-500 to-accent-indigo'
+                      : index % 3 === 1
+                      ? 'from-accent-cyan via-teal-400 to-blue-500'
+                      : 'from-accent-rose via-pink-500 to-accent-violet'
+                  }`} />
 
                   <div className="p-6 flex flex-col flex-1">
                     {/* Header */}
