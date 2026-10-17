@@ -6,6 +6,10 @@ export interface Project {
   liveUrl?: string;
   featured?: boolean;
   logo?: string;
+  timing?: string;
+  metrics?: { label: string; value: string }[];
+  architecture?: string;
+  highlights?: string[];
 }
 
 export interface Experience {
@@ -16,6 +20,7 @@ export interface Experience {
   techStack: string[];
   logo?: string;
   verifyUrl?: string;
+  impactMetrics?: { label: string; value: string }[];
 }
 
 export interface Achievement {

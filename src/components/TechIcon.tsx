@@ -31,9 +31,13 @@ const ICON_MAP: Record<string, string> = {
   'REST APIs':         'https://cdn.simpleicons.org/postman/FF6C37',
   'JWT Authentication':'https://cdn.simpleicons.org/jsonwebtokens/000000',
   'Docker':            'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
-  // AI / ML
+  // AI / ML & Inference Systems
+  'PyTorch':                   'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pytorch/pytorch-original.svg',
+  'TensorRT / ONNX':           'https://cdn.simpleicons.org/nvidia/76B900',
+  'vLLM / TensorRT-LLM':       'https://cdn.simpleicons.org/fastapi/009688',
   'Prompt Engineering':        '/prompt-engineering.svg',
   'RAG Systems':               'https://cdn.simpleicons.org/langchain/1C3C3C',
+  'LangGraph & Agents':        'https://cdn.simpleicons.org/langchain/1C3C3C',
   'LLMs (GPT, LLaMA)':        'https://cdn.simpleicons.org/meta/0082FB',
   'Natural Language Processing':'https://cdn.simpleicons.org/spacy/09A3D5',
   'scikit-learn':              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg',
@@ -42,15 +46,23 @@ const ICON_MAP: Record<string, string> = {
   'Feature Engineering':       'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/numpy/numpy-original.svg',
   'OpenAI API':                '/openai.svg',
   'LangChain':                 'https://cdn.simpleicons.org/langchain/1C3C3C',
-  'Fine-tuning':               'https://cdn.simpleicons.org/huggingface/FFD21E',
+  'Fine-tuning & LoRA':        'https://cdn.simpleicons.org/huggingface/FFD21E',
   'Agentic AI':                'https://cdn.simpleicons.org/anthropic/191919',
-  // Tools & DevOps
-  'PostgreSQL':  'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
-  'MySQL':       'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
-  'Git / GitHub':'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
-  'Linux':       'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg',
-  'AWS':         'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
-  'Streamlit':   'https://cdn.simpleicons.org/streamlit/FF4B4B',
+  'MLOps / Model Monitoring':  'https://cdn.simpleicons.org/mlflow/0194E2',
+  'Vector DBs (Qdrant/Pinecone)': 'https://cdn.simpleicons.org/qdrant/DC2626',
+  'faster-whisper':            'https://cdn.simpleicons.org/openai/412991',
+  'NLLB-200':                  'https://cdn.simpleicons.org/meta/0082FB',
+  // Tools & DevOps & High-Throughput Infrastructure
+  'PostgreSQL':                'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
+  'Redis':                     'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg',
+  'Kafka / Event Streaming':   'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg',
+  'Docker & Containers':       'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
+  'Kubernetes':                'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg',
+  'MySQL':                     'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
+  'Git / GitHub':              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg',
+  'Linux & Bash':              'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg',
+  'AWS':                       'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg',
+  'Streamlit':                 'https://cdn.simpleicons.org/streamlit/FF4B4B',
 };
 
 export const TechIcon = ({ name, size = 22, className = '' }: TechIconProps) => {

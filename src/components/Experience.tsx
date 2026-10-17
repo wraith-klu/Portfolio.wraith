@@ -79,6 +79,17 @@ export const Experience = () => {
                   </div>
                 </div>
 
+                {exp.impactMetrics && exp.impactMetrics.length > 0 && (
+                  <div className="grid grid-cols-3 gap-2.5 mb-5">
+                    {exp.impactMetrics.map((metric, mi) => (
+                      <div key={mi} className="glass-card rounded-xl p-2.5 text-center border border-accent-violet/20 bg-accent-violet/5">
+                        <div className="text-base sm:text-lg font-black text-accent-violet leading-tight">{metric.value}</div>
+                        <div className="text-[10px] font-semibold text-slate-500 tracking-wide uppercase mt-0.5">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 <ul className="space-y-3 mb-6">
                   {exp.description.map((item, i) => (
                     <motion.li

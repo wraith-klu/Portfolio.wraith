@@ -22,7 +22,7 @@ export const Footer = () => {
                 <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-accent-violet to-accent-cyan flex items-center justify-center shadow-violet-glow">
                   <span className="text-white font-black text-sm">SY</span>
                 </div>
-                <span className="text-lg font-black gradient-text-violet">SAURABH.AI</span>
+                <span className="text-lg font-black gradient-text-violet">Wraith.AI</span>
               </div>
               <p className="text-slate-500 text-sm max-w-xs leading-relaxed">
                 AI / ML Engineer & Backend Developer. Designing intelligent language architectures and high-performance API services.
@@ -98,7 +98,7 @@ export const Footer = () => {
           <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs font-semibold text-slate-400">
             <p>© {new Date().getFullYear()} Saurabh Yadav. All rights reserved.</p>
             <p className="font-mono text-[10px] tracking-widest text-slate-300 uppercase">
-              Designed & Built by Saurabh.AI
+              Designed & Built by Wraith
             </p>
           </div>
         </div>
