@@ -16,11 +16,11 @@ export const personalInfo = {
   github: 'https://github.com/wraith-klu',
   portfolio: 'https://wraithklu.vercel.app',
   taglines: [
-    'AI / ML Systems Engineer',
-    'Real-Time LLM & Speech Inference Developer',
-    'Applied ML Pipelines & Scalable Backends',
-    'Full-Stack AI Developer (FastAPI + React)',
-    'Algorithmic Problem Solver (Top 1% CSE • 9.61 GPA)',
+    'AI / ML Engineer',
+    'LLM Application Developer',
+    'NLP & Speech Systems Engineer',
+    'Backend AI Engineer (FastAPI · Python)',
+    'MLOps & Cloud AI Engineer',
   ],
   bio: `Computer Science undergraduate specializing in high-performance AI/ML systems, real-time speech translation (ESP32-S3 + Whisper + NLLB + Piper), and LLM-powered applications at KL University with an exceptional 9.61 GPA (Top 1% CSE). Experienced in architecting production-grade inference pipelines, WebSocket streaming, and cloud deployments on AWS and modern cloud platforms. Combines rigorous competitive programming fundamentals (500+ solved problems) with end-to-end full-stack capabilities (FastAPI, React, PyTorch, Docker) to build reliable, high-speed intelligent systems.`
 };
