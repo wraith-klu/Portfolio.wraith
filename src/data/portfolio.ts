@@ -95,7 +95,7 @@ export const projects: Project[] = [
     techStack: ['Python', 'FastAPI', 'React', 'Three.js', 'Machine Learning', 'scikit-learn', 'LLM', 'Gemini', 'Ensemble ML'],
     liveUrl: 'https://norrin-ai.vercel.app/',
     githubUrl: 'https://github.com/wraith-klu/Norrin.AI.git',
-    featured: true,
+    featured: false,
     timing: 'May – July 2026',
     architecture: 'Stateless Ensemble ML + Gemini 3.6 Flash Fallback + WeatherAPI Live Feed',
     metrics: [
@@ -115,7 +115,7 @@ export const projects: Project[] = [
     techStack: ['FastAPI', 'Python 3.11', 'WebSocket', 'faster-whisper', 'NLLB-200', 'Piper TTS', 'PostgreSQL', 'Docker'],
     liveUrl: 'https://echo-alpha-agent.vercel.app/',
     githubUrl: 'https://github.com/wraith-klu/Echo.git',
-    featured: true,
+    featured: false,
     timing: 'July 2026 – Present',
     architecture: 'ESP32-S3 I2S Mic → WebSocket PCM → Whisper ASR → NLLB-200 MT → Piper TTS (ONNX) → WAV Stream',
     metrics: [
