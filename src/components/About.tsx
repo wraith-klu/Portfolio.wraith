@@ -62,15 +62,15 @@ export const About = () => {
                 {[
                   {
                     icon: Target,
-                    title: 'Engineering Goals',
-                    desc: 'Building language-centric intelligent systems that convert complex inputs into precise, structured API intelligence at scale.',
+                    title: 'System Architecture & Inference',
+                    desc: 'Designing fault-tolerant, sub-second inference pipelines that fuse local quantization (ONNX, faster-whisper) with resilient multi-tier LLM fallbacks.',
                     color: 'text-accent-violet',
                     bg: 'bg-accent-violet/8'
                   },
                   {
                     icon: BookOpen,
-                    title: 'Academic Dedication',
-                    desc: 'Pursuing continuous learning in advanced NLP, data structures, cloud-native deployments, and LLM orchestration.',
+                    title: 'Algorithmic Mastery & MLOps',
+                    desc: 'Pairing deep CS foundational rigor (500+ solved problems, 9.61 GPA) with automated CI/CD model validation, regression tests, and cloud orchestration.',
                     color: 'text-accent-cyan',
                     bg: 'bg-accent-cyan/8'
                   }

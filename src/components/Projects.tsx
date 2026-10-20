@@ -30,12 +30,12 @@ export const Projects = () => {
     if (activeCategory === 'All') return true;
     if (activeCategory === 'AI / ML') {
       return project.techStack.some(tech =>
-        ['AI', 'ML', 'NLP', 'LLM', 'Machine Learning', 'Sentiment Analysis', 'AST'].includes(tech)
+        ['AI', 'ML', 'NLP', 'LLM', 'Machine Learning', 'Sentiment Analysis', 'AST', 'Gemini', 'Ensemble ML', 'faster-whisper', 'NLLB-200', 'Piper TTS', 'scikit-learn'].includes(tech)
       );
     }
     if (activeCategory === 'Full-Stack') {
       return project.techStack.some(tech =>
-        ['React.js', 'Spring Boot', 'MySQL', 'Docker', 'REST APIs', 'JWT', 'React (Vite)', 'React'].includes(tech)
+        ['React.js', 'Spring Boot', 'MySQL', 'Docker', 'REST APIs', 'JWT', 'React (Vite)', 'React', 'FastAPI', 'WebSocket', 'PostgreSQL', 'Three.js'].includes(tech)
       );
     }
     if (activeCategory === 'Hackathons') {
@@ -107,7 +107,13 @@ export const Projects = () => {
                   className="glass-card rounded-3xl overflow-hidden border border-white/60 shadow-glass group flex flex-col"
                 >
                   {/* Top gradient bar */}
-                  <div className={`h-1 bg-gradient-to-r ${categoryAccents['All']}`} />
+                  <div className={`h-1.5 bg-gradient-to-r ${
+                    index % 3 === 0
+                      ? 'from-accent-violet via-purple-500 to-accent-indigo'
+                      : index % 3 === 1
+                      ? 'from-accent-cyan via-teal-400 to-blue-500'
+                      : 'from-accent-rose via-pink-500 to-accent-violet'
+                  }`} />
 
                   <div className="p-6 flex flex-col flex-1">
                     {/* Header */}
@@ -125,6 +131,9 @@ export const Projects = () => {
                           )}
                           {project.featured && (
                             <span className="badge badge-amber text-[10px]">Featured</span>
+                          )}
+                          {project.timing && (
+                            <span className="badge badge-cyan text-[10px]">{project.timing}</span>
                           )}
                         </div>
                         <h3 className="text-base font-extrabold text-slate-900 leading-tight group-hover:text-accent-violet transition-colors duration-300">
@@ -160,19 +169,51 @@ export const Projects = () => {
                       </div>
                     </div>
 
-                    <p className="text-slate-600 text-sm leading-relaxed flex-1 mb-4">
+                    <p className="text-slate-600 text-sm leading-relaxed mb-4">
                       {project.description}
                     </p>
 
+                    {/* Architecture Pill */}
+                    {project.architecture && (
+                      <div className="mb-3 p-2 rounded-xl bg-slate-900/[0.03] border border-black/5 text-[11px] font-mono text-slate-700">
+                        <span className="font-bold text-accent-violet">Arch: </span>
+                        {project.architecture}
+                      </div>
+                    )}
+
+                    {/* Key Metrics */}
+                    {project.metrics && project.metrics.length > 0 && (
+                      <div className="grid grid-cols-3 gap-2 mb-3">
+                        {project.metrics.map((m, mi) => (
+                          <div key={mi} className="glass-card rounded-lg p-2 text-center border border-white/80 bg-white/50">
+                            <div className="text-xs font-black text-slate-900 leading-tight">{m.value}</div>
+                            <div className="text-[9px] font-semibold text-slate-500 uppercase mt-0.5 tracking-tight">{m.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Highlights bullet points */}
+                    {project.highlights && project.highlights.length > 0 && (
+                      <ul className="mb-4 space-y-1 text-[11px] text-slate-600">
+                        {project.highlights.map((h, hi) => (
+                          <li key={hi} className="flex items-start gap-1.5">
+                            <span className="text-accent-cyan font-bold mt-0.5">▹</span>
+                            <span>{h}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
                     {/* Tech stack */}
-                    <div className="flex flex-wrap gap-1.5 mt-auto pt-4 border-t border-black/5">
-                      {project.techStack.slice(0, 5).map((tech, i) => (
+                    <div className="flex flex-wrap gap-1.5 mt-auto pt-3 border-t border-black/5">
+                      {project.techStack.slice(0, 6).map((tech, i) => (
                         <span key={i} className="badge badge-violet text-[10px] cursor-default">
                           {tech}
                         </span>
                       ))}
-                      {project.techStack.length > 5 && (
-                        <span className="badge badge-cyan text-[10px]">+{project.techStack.length - 5}</span>
+                      {project.techStack.length > 6 && (
+                        <span className="badge badge-cyan text-[10px]">+{project.techStack.length - 6}</span>
                       )}
                     </div>
                   </div>

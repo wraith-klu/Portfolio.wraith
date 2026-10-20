@@ -105,7 +105,7 @@ export const Hero = () => {
             <motion.div variants={itemVariants}>
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-green-200/80 text-sm font-semibold text-green-700 shadow-sm">
                 <span className="status-dot" />
-                Available for Roles & Internships
+                Available for AI/ML Engineer & High-Impact Software Roles
               </span>
             </motion.div>
 
@@ -140,7 +140,7 @@ export const Hero = () => {
               variants={itemVariants}
               className="text-slate-600 text-base leading-relaxed max-w-lg"
             >
-              Computer Science undergrad specializing in AI-driven language technology, generative AI, and scalable backend engineering at KL University with a <strong className="text-slate-900">9.61 GPA</strong>.
+              Architecting sub-second distributed AI systems, real-time speech translation IoT engines, and high-throughput LLM pipelines. Top 1% CSE Department rank with a <strong className="text-slate-900">9.61 GPA</strong> and 500+ algorithmic solutions.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -190,8 +190,8 @@ export const Hero = () => {
 
             {/* Tags */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
-              {['Generative AI', 'LLM Architectures', 'FastAPI', 'RAG Systems', 'NLP'].map(tag => (
-                <span key={tag} className="badge badge-violet text-xs">{tag}</span>
+              {['Low-Latency Inference', 'LLM Fallbacks & Reasoning', 'ESP32 IoT + WebSocket', 'Ensemble ML', 'Distributed Systems', 'MLOps'].map(tag => (
+                <span key={tag} className="badge badge-violet text-xs font-semibold">{tag}</span>
               ))}
             </motion.div>
           </motion.div>

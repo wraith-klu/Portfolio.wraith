@@ -168,25 +168,25 @@ body {
 
 /* Light glass — used on sections with light bg */
 .glass-card {
-  background: rgba(255, 255, 255, 0.55);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.68);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(0, 0, 0, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    0 10px 30px -10px rgba(0, 0, 0, 0.07),
+    0 4px 12px rgba(124, 58, 237, 0.04),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.72);
-  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.95);
   box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.12),
-    0 4px 16px rgba(0, 0, 0, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  transform: translateY(-2px);
+    0 22px 45px -12px rgba(124, 58, 237, 0.14),
+    0 6px 18px rgba(0, 0, 0, 0.06),
+    inset 0 1px 2px 0 rgba(255, 255, 255, 1);
+  transform: translateY(-3px);
 }
 
 /* Dark glass — used for contrast elements or hero */
@@ -208,11 +208,11 @@ body {
 
 /* Navigation glass */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.70);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 35px -5px rgba(0, 0, 0, 0.08), 0 2px 10px rgba(124, 58, 237, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.9);
 }
 
 /* ============================================
